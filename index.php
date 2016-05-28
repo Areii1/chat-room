@@ -18,6 +18,10 @@
 		echo $e->getMessage();
 		die();
 	}
+
+	$query = $handler->query('SELECT * FROM message');
+	$r = $query->fetch(PDO::FETCH_ASSOC);
+	echo '<pre>', print_r($r), '</pre>';
 	?>
 	<form id="text-input">
 		<input type="text" name="comment">
