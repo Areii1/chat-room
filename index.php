@@ -20,8 +20,7 @@
 	}
 
 	$query = $handler->query('SELECT * FROM message');
-	$r = $query->fetch(PDO::FETCH_ASSOC);
-	echo '<pre>', print_r($r), '</pre>';
+		echo '<pre>', print_r($query->fetchAll(PDO::FETCH_ASSOC)), '</pre>';
 	?>
 	<form id="text-input">
 		<input type="text" name="comment">
