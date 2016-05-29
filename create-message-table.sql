@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: May 28, 2016 at 10:09 AM
+-- Generation Time: May 29, 2016 at 07:25 PM
 -- Server version: 5.7.9
 -- PHP Version: 5.6.16
 
@@ -29,7 +29,7 @@ SET time_zone = "+00:00";
 DROP TABLE IF EXISTS `message`;
 CREATE TABLE IF NOT EXISTS `message` (
   `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT,
-  `time` time NOT NULL,
+  `time` datetime NOT NULL,
   `sender` varchar(100) NOT NULL,
   `content` text NOT NULL,
   PRIMARY KEY (`id`)
