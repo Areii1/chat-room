@@ -26,11 +26,21 @@ body {
 }
 
 li {
+	list-style-type: none;
+	margin-bottom: 30px;
+}
+
+.date {
+	text-align: right;
+	color: #B9BCCB;
+	margin-bottom: 10px;
+}
+
+.content {
 	background: #7BC4EF;
-	margin-bottom: 20px;
 	padding: 20px 35px;
 	border-radius: 5px;
-	list-style-type: none;
+
 }
 
 #message-form {
