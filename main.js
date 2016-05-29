@@ -39,6 +39,7 @@ $('#message-form').submit(function(e) {
 		},
 		success: function(response) {
 			console.log(response);
+			$("#comment").val('');
 		}
 	});
 });
