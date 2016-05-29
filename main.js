@@ -14,15 +14,15 @@ function fetchMessages() {
 
 function renderMessages(messages) {	
 	$('#chat-area').empty();
-	for (var i = 0; i < messages.length; i++) {
-		var time = messages[i].time;
-		var sender = messages[i].sender;
-		var content = messages[i].content;
+	messages.forEach(function(message) {
+		var time = message.time;
+		var sender = message.sender;
+		var content = message.content;
 
 		var $message = $('<li>');
 		$message.html(time + ' - ' +  sender + '  -  ' + content);
 		$("#chat-area").append($message);
-	}
+	});
 }
 
 $('#message-form').submit(function(e) {
