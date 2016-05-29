@@ -27,7 +27,7 @@ function renderMessages(messages) {
 
 $('#message-form').submit(function(e) {
 	e.preventDefault();
-	var message = $('#message').val();
+	var message = $('#message').val().trim();
 	var sender = $('#sender').val();
 	if (!message) {
 		return;
