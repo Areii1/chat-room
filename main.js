@@ -50,7 +50,7 @@ $('#message-form').submit(function(e) {
 function scrollChatAreaDown() {
 	var height = 0;
 	$('ul li').each(function(i, value){
-	    height += parseInt($(this).height());
+	    height += parseInt($(this).outerHeight(true));
 	});
 
 	height += '';
