@@ -8,6 +8,7 @@
 </head>
 <body>
 	<p id="demo">Say hello!</p>
+	<input type="text" id="sender" placeholder="username">
 	<ul id="chat-area"></ul>
 	<form id="message-form">
 		<input type="text" id="comment">
