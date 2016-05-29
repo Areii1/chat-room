@@ -7,25 +7,13 @@
 	<link rel="stylesheet" type="text/css" href="stylesheet.css">
 </head>
 <body>
-	<p>Say hello!</p>
+	<p id="demo">Say hello!</p>
 	<div id="chat-area"></div>
-	<?php 
-	try {
-		$handler = new PDO('mysql:host=127.0.0.1;dbname=chat-room', 'root', '');
-		$handler->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-	}
-	catch (PDOException $e) {
-		echo $e->getMessage();
-		die();
-	}
-
-	$query = $handler->query('SELECT * FROM message');
-		echo '<pre>', print_r($query->fetchAll(PDO::FETCH_ASSOC)), '</pre>';
-	?>
 	<form id="text-input">
 		<input type="text" name="comment">
 		<input type="submit" value="send">
 	</form>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 	<script src="main.js"></script>
 </body>
 </html>
