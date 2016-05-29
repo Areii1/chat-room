@@ -20,18 +20,30 @@ function renderMessages(messages) {
 		var sender = message.sender;
 		var content = message.content;
 
-		var $message = $('<li>');
-		var $date = $('<div>', {
-			class: 'date'
+		var $timeInfo = $('<span>', {
+			class: 'time-info'
 		});
+		$timeInfo.text(time);
+
+		var $senderInfo = $('<span>', {
+			class: 'sender-info'
+		});
+		$senderInfo.text(sender);
+		
+		var $messageInformation = $('<div>', {
+			class: 'message-information'
+		});
+		$messageInformation.append($timeInfo);
+		$messageInformation.append($senderInfo);
+
 		var $content = $('<div>', {
 			class: 'content'
 		});
+		$content.text(content);
+		
+		var $message = $('<li>');
 
-		$content.html(content);
-		$date.html(time + ' ' + sender);
-
-		$message.append($date);
+		$message.append($messageInformation);
 		$message.append($content);
 
 		$("#chat-area").append($message);
