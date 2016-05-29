@@ -1,5 +1,5 @@
 fetchMessages();
-setInterval(fetchMessages, 5000);
+setInterval(fetchMessages, 2000);
 
 function fetchMessages() {
 	$.ajax({
@@ -27,5 +27,10 @@ function renderMessages(messages) {
 $('#message-form').submit(function(e) {
 	e.preventDefault();
 	var message = $('#comment').val();
-	console.log(message);
+	$.ajax({
+		url: 'insert-message.php',
+		success: function(response) {
+			console.log(response);
+		}
+	})
 });
