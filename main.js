@@ -23,3 +23,9 @@ function renderMessages(messages) {
 		$("#chat-area").append($message);
 	}
 }
+
+$('#message-form').submit(function(e) {
+	e.preventDefault();
+	var message = $('#comment').val();
+	console.log(message);
+});

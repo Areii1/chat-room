@@ -10,7 +10,7 @@
 	<p id="demo">Say hello!</p>
 	<ul id="chat-area"></ul>
 	<form id="message-form">
-		<input type="text" name="comment">
+		<input type="text" id="comment">
 		<input type="submit" value="send">
 	</form>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
