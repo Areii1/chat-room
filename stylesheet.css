@@ -1,8 +1,12 @@
 body {
-	background: yellow;
+	background: lightgrey;
 }
 
 #chat-area {
 	border: 2px dotted black;
 	max-width: 50%;
+}
+
+li {
+	color: blue;
 }
