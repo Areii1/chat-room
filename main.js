@@ -3,7 +3,7 @@ setInterval(fetchMessages, 2000);
 
 function fetchMessages() {
 	$.ajax({
-		url: 'chat-messages.php',
+		url: 'backend/chat-messages.php',
 		success: function(response) {
 			var parsedResponse = JSON.parse(response);
 			renderMessages(parsedResponse);
@@ -30,7 +30,7 @@ $('#message-form').submit(function(e) {
 	var message = $('#message').val();
 	var sender = $('#sender').val();
 	$.ajax({
-		url: 'insert-message.php',
+		url: 'backend/insert-message.php',
 		type: 'POST',
 		data: {
 			sender: sender,
