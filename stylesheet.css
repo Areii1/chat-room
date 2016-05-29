@@ -19,10 +19,10 @@ body {
 #chat-area {
 	border-top: 3px solid #fff;
 	border-bottom: 3px solid #fff;
-	height: 600px;
+	height: 550px;
 	overflow-y: scroll;
 	padding: 20px;
-	margin-bottom: 0;
+	margin: 0;
 }
 
 li {
@@ -38,13 +38,22 @@ li {
 	overflow: auto;
 }
 
-#message {
+input[type="text"] {
 	border: 0;
 	background: #fff;
 	padding: 20px;
 	width: 100%;
 	display: block;
 	border-radius: 5px;
+}
+
+#sender-wrapper {
+	padding: 20px;
+}
+
+#sender {
+	max-width: 350px;
+	margin: 0 auto;
 }
 
 #send-button {
