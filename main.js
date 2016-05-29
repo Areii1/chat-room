@@ -1,9 +1,14 @@
-$.ajax({
-	url: 'chat-messages.php',
-	success: function(response) {
-		renderMessages(JSON.parse(response));
-	}
-});
+fetchMessages();
+setInterval(fetchMessages, 5000);
+
+function fetchMessages() {
+	$.ajax({
+		url: 'chat-messages.php',
+		success: function(response) {
+			renderMessages(JSON.parse(response));
+		}
+	});
+}
 
 function renderMessages(messages) {
 	for (var i = 0; i < messages.length; i++) {
