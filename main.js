@@ -1,14 +1,15 @@
-fetchMessages();
-scrollChatAreaDown();
+fetchMessages(true);
 setInterval(fetchMessages, 2000);
 
-function fetchMessages() {
+function fetchMessages(shouldScroll) {
 	$.ajax({
 		url: 'backend/chat-messages.php',
 		success: function(response) {
 			var parsedResponse = JSON.parse(response);
 			renderMessages(parsedResponse);
-			
+			if (shouldScroll) {
+				scrollChatAreaDown();
+			}
 		}
 	});
 }
@@ -67,8 +68,7 @@ $('#message-form').submit(function(e) {
 		success: function(response) {
 			console.log(response);
 			$("#message").val('');
-			fetchMessages();
-			scrollChatAreaDown();
+			fetchMessages(true);
 		}
 	});
 });
