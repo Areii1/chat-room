@@ -1,4 +1,5 @@
 fetchMessages();
+scrollChatAreaDown();
 setInterval(fetchMessages, 2000);
 
 function fetchMessages() {
@@ -7,7 +8,7 @@ function fetchMessages() {
 		success: function(response) {
 			var parsedResponse = JSON.parse(response);
 			renderMessages(parsedResponse);
-			scrollChatAreaDown();
+			
 		}
 	});
 }
@@ -43,6 +44,7 @@ $('#message-form').submit(function(e) {
 			console.log(response);
 			$("#message").val('');
 			fetchMessages();
+			scrollChatAreaDown();
 		}
 	});
 });
