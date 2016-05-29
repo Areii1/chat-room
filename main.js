@@ -5,12 +5,14 @@ function fetchMessages() {
 	$.ajax({
 		url: 'chat-messages.php',
 		success: function(response) {
-			renderMessages(JSON.parse(response));
+			var parsedResponse = JSON.parse(response);
+			renderMessages(parsedResponse);
 		}
 	});
 }
 
-function renderMessages(messages) {
+function renderMessages(messages) {	
+	$('#chat-area').empty();
 	for (var i = 0; i < messages.length; i++) {
 		var time = messages[i].time;
 		var sender = messages[i].sender;
