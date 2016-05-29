@@ -29,6 +29,9 @@ $('#message-form').submit(function(e) {
 	e.preventDefault();
 	var message = $('#message').val();
 	var sender = $('#sender').val();
+	if (!message) {
+		return;
+	}
 	$.ajax({
 		url: 'backend/insert-message.php',
 		type: 'POST',
