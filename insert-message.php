@@ -10,14 +10,10 @@ catch (PDOException $e) {
 
 $time = '00:01:02';
 $sender = 'DJ aksuli';
-$content = 'bye bye bye';
+$content = $_POST['message'];
 
-$sql = 'INSERT INTO message (time, sender, content) VALUES (:time, :sender, :content)';
+$sql = 'INSERT INTO message (time, sender, content) VALUES (?, ?, ?)';
 $query = $handler->prepare($sql);
 
-$query->execute(array(
-	':time' => $time,
-	':sender' => $sender,
-	':content' => $content
-	));
+$query->execute([$time, $sender, $content]);
 ?>

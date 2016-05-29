@@ -29,8 +29,10 @@ $('#message-form').submit(function(e) {
 	var message = $('#comment').val();
 	$.ajax({
 		url: 'insert-message.php',
+		type: 'POST',
+		data: {message: message},
 		success: function(response) {
 			console.log(response);
 		}
-	})
+	});
 });
