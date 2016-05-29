@@ -8,12 +8,11 @@ catch (PDOException $e) {
 	die();
 }
 
-$time = '00:01:02';
 $sender = 'DJ aksuli';
 $content = $_POST['message'];
 
-$sql = 'INSERT INTO message (time, sender, content) VALUES (?, ?, ?)';
+$sql = 'INSERT INTO message (time, sender, content) VALUES (NOW(), ?, ?)';
 $query = $handler->prepare($sql);
 
-$query->execute([$time, $sender, $content]);
+$query->execute([$sender, $content]);
 ?>
