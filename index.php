@@ -9,7 +9,7 @@
 <body>
 	<p id="demo">Say hello!</p>
 	<ul id="chat-area"></ul>
-	<form id="text-input">
+	<form id="message-form">
 		<input type="text" name="comment">
 		<input type="submit" value="send">
 	</form>

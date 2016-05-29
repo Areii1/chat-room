@@ -1,18 +1,18 @@
 $.ajax({
 	url: 'chat-messages.php',
 	success: function(response) {
-		renderMessage(JSON.parse(response));
+		renderMessages(JSON.parse(response));
 	}
 });
 
-function renderMessage(response) {
-	for (var i = 0; i < response.length; i++) {
-		var time = response[i].time;
-		var sender = response[i].sender;
-		var content = response[i].content;
+function renderMessages(messages) {
+	for (var i = 0; i < messages.length; i++) {
+		var time = messages[i].time;
+		var sender = messages[i].sender;
+		var content = messages[i].content;
 
-		var message = document.createElement('li');
-		message.innerHTML = time + ' - ' +  sender + '  -  ' + content;
-		document.getElementById('chat-area').appendChild(message);
+		var $message = $('<li>');
+		$message.html(time + ' - ' +  sender + '  -  ' + content);
+		$("#chat-area").append($message);
 	}
 }
