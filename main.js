@@ -27,7 +27,7 @@ function renderMessages(messages) {
 
 $('#message-form').submit(function(e) {
 	e.preventDefault();
-	var message = $('#comment').val();
+	var message = $('#message').val();
 	var sender = $('#sender').val();
 	$.ajax({
 		url: 'insert-message.php',
@@ -38,7 +38,7 @@ $('#message-form').submit(function(e) {
 		},
 		success: function(response) {
 			console.log(response);
-			$("#comment").val('');
+			$("#message").val('');
 			fetchMessages();
 		}
 	});

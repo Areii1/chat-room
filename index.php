@@ -11,7 +11,7 @@
 	<input type="text" id="sender" placeholder="username">
 	<ul id="chat-area"></ul>
 	<form id="message-form">
-		<input type="text" id="comment">
+		<input type="text" id="message">
 		<input type="submit" value="send">
 	</form>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>

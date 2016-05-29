@@ -1,12 +1,5 @@
 <?php
-try {
-	$handler = new PDO('mysql:host=localhost;dbname=chat-room', 'root', '');
-	$handler->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-}
-catch (PDOException $e) {
-	echo $e->getMessage();
-	die();
-}
+require 'connect-to-db.php';
 
 $sender = $_POST['sender'];
 $content = $_POST['message'];
