@@ -7,6 +7,7 @@ function fetchMessages() {
 		success: function(response) {
 			var parsedResponse = JSON.parse(response);
 			renderMessages(parsedResponse);
+			scrollChatAreaDown();
 		}
 	});
 }
@@ -24,8 +25,6 @@ function renderMessages(messages) {
 	}
 }
 
-
-
 $('#message-form').submit(function(e) {
 	e.preventDefault();
 	var message = $('#comment').val();
@@ -40,6 +39,18 @@ $('#message-form').submit(function(e) {
 		success: function(response) {
 			console.log(response);
 			$("#comment").val('');
+			fetchMessages();
 		}
 	});
 });
+
+function scrollChatAreaDown() {
+	var height = 0;
+	$('ul li').each(function(i, value){
+	    height += parseInt($(this).height());
+	});
+
+	height += '';
+
+	$('ul').animate({scrollTop: height});
+}

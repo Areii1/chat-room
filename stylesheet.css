@@ -5,8 +5,11 @@ body {
 #chat-area {
 	border: 2px dotted black;
 	max-width: 50%;
+	height: 600px;
+	overflow-y: scroll;
 }
 
 li {
 	color: blue;
 }
+
