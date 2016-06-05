@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Jun 05, 2016 at 09:05 PM
+-- Generation Time: Jun 05, 2016 at 10:20 PM
 -- Server version: 5.7.12-0ubuntu1
 -- PHP Version: 7.0.4-7ubuntu2.1
 
@@ -23,18 +23,6 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `groups`
---
-
-CREATE TABLE `groups` (
-  `id` int(11) NOT NULL,
-  `name` varchar(20) NOT NULL,
-  `permissions` text NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `message`
 --
 
@@ -48,40 +36,18 @@ CREATE TABLE `message` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `users`
+-- Table structure for table `user`
 --
 
-CREATE TABLE `users` (
-  `id` int(11) NOT NULL,
-  `username` varchar(20) NOT NULL,
-  `password` varchar(64) NOT NULL,
-  `salt` varchar(32) NOT NULL,
-  `name` varchar(50) NOT NULL,
-  `joined` datetime NOT NULL,
-  `group` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `users_session`
---
-
-CREATE TABLE `users_session` (
-  `id` int(11) NOT NULL,
-  `user_id` int(11) NOT NULL,
-  `hash` varchar(50) NOT NULL
+CREATE TABLE `user` (
+  `id` int(10) NOT NULL,
+  `username` varchar(100) NOT NULL,
+  `password` int(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Indexes for dumped tables
 --
-
---
--- Indexes for table `groups`
---
-ALTER TABLE `groups`
-  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `message`
@@ -90,15 +56,9 @@ ALTER TABLE `message`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `users`
+-- Indexes for table `user`
 --
-ALTER TABLE `users`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `users_session`
---
-ALTER TABLE `users_session`
+ALTER TABLE `user`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -106,25 +66,15 @@ ALTER TABLE `users_session`
 --
 
 --
--- AUTO_INCREMENT for table `groups`
---
-ALTER TABLE `groups`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
---
 -- AUTO_INCREMENT for table `message`
 --
 ALTER TABLE `message`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 --
--- AUTO_INCREMENT for table `users`
+-- AUTO_INCREMENT for table `user`
 --
-ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT for table `users_session`
---
-ALTER TABLE `users_session`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+ALTER TABLE `user`
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
