@@ -5,11 +5,11 @@
 </head>
 <body>
 	<h1>Register</h1>
-	<form>
+	<form action="backend/create-user.php" method="POST">
 		<label for="username">username</label>
-		<input type="text" id="username">
+		<input type="text" id="username" name="username">
 		<label for="password">password</label>
-		<input type="password" id="password">
+		<input type="password" id="password" name="password">
 		<input type="submit" value="Register">
 	</form>
 </body>
