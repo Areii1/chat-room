@@ -6,15 +6,14 @@ $password = $_POST['password'];
 if ($username && $password) {
 	require 'connect-to-db.php';
 
-	$sql = "SELECT * FROM user WHERE username=?";
+	$sql = "SELECT * FROM user WHERE username=? AND password=?";
 	$query = $handler->prepare($sql);
 
-	$query->execute([$username]);
-	$result = $query->fetch(PDO::FETCH_ASSOC);
+	$query->execute([$username, $password]);
 
-	$dbpassword = $result['password'];
+	$isUserFound = $query->fetch(PDO::FETCH_ASSOC);
 
-	if ($dbpassword == $password) {
+	if ($isUserFound) {
 		echo 'success';
 	}
 	else {
