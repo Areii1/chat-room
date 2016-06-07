@@ -12,11 +12,14 @@ if ($username && $password) {
 
 	$query->execute([$username, $password]);
 
-	$isUserFound = $query->fetch(PDO::FETCH_ASSOC);
+	$result = $query->fetch(PDO::FETCH_ASSOC);
 
-	if ($isUserFound) {
+	
+
+	if ($result) {
 		echo 'success';
         $_SESSION['username'] = $username;
+        $_SESSION['user_id'] = $result['id'];
 
         header("Location: ../index.php");
         die();

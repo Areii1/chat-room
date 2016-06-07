@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-if (!$_SESSION['username']) {
+if (!$_SESSION['username'] && !$_SESSION['id']) {
 	header("Location: login.html");
 	die();
 }

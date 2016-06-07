@@ -18,7 +18,7 @@ function renderMessages(messages) {
 	$('#chat-area').empty();
 	messages.forEach(function(message) {
 		var time = message.time;
-		var sender = message.sender;
+		var sender = message.username;
 		var content = message.content;
 
 		var $timeInfo = $('<span>', {

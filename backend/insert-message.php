@@ -3,11 +3,11 @@ session_start();
 
 require 'connect-to-db.php';
 
-$sender = $_SESSION['username'];
+$userId = $_SESSION['user_id'];
 $content = $_POST['message'];
 
-$sql = 'INSERT INTO message (time, sender, content) VALUES (NOW(), ?, ?)';
+$sql = 'INSERT INTO message (time, sender_id, content) VALUES (NOW(), ?, ?)';
 $query = $handler->prepare($sql);
 
-$query->execute([$sender, $content]);
+$query->execute([$userId, $content]);
 ?>
