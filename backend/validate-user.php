@@ -17,9 +17,14 @@ if ($username && $password) {
 	if ($isUserFound) {
 		echo 'success';
         $_SESSION['username'] = $username;
+
+        header("Location: ../index.php");
+        die();
 	}
 	else {
 		echo 'failure';
+		header('Location: ../login.html');
+		die();
 	}
 }
 else {

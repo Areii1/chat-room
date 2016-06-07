@@ -9,4 +9,7 @@ $sql = 'INSERT INTO user (username, password) VALUES (?, ?)';
 $query = $handler->prepare($sql);
 
 $query->execute([$username, $password]);
+
+header('Location: ../login.html');
+die();
 ?>
