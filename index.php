@@ -3,6 +3,7 @@ session_start();
 
 if (!$_SESSION['username']) {
 	header("Location: login.html");
+	die();
 }
 ?>
 
@@ -16,9 +17,8 @@ if (!$_SESSION['username']) {
 	<link rel="stylesheet" type="text/css" href="stylesheet.css">
 </head>
 <body>
+	<p>Hello <?php echo $_SESSION['username']; ?></p>
 	<nav>
-		<a href="login.html">Login</a>
-		<a href="register.html">Register</a>
 		<a href="backend/logout.php">Logout</a>
 	</nav>
 	<div id="wrapper">
