@@ -22,9 +22,6 @@ if (!$_SESSION['username']) {
 		<a href="backend/logout.php">Logout</a>
 	</nav>
 	<div id="wrapper">
-		<div id="sender-wrapper">
-			<input type="text" id="sender" placeholder="Who are you?">
-		</div>
 		<ul id="chat-area"></ul>
 		<form id="message-form">
 			<input type="text" id="message" placeholder="Say hello!" autocomplete="off">

@@ -54,7 +54,6 @@ function renderMessages(messages) {
 $('#message-form').submit(function(e) {
 	e.preventDefault();
 	var message = $('#message').val().trim();
-	var sender = $('#sender').val();
 	if (!message) {
 		return;
 	}
@@ -62,7 +61,6 @@ $('#message-form').submit(function(e) {
 		url: 'backend/insert-message.php',
 		type: 'POST',
 		data: {
-			sender: sender,
 			message: message 
 		},
 		success: function(response) {
