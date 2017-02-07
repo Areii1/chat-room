@@ -24,7 +24,8 @@ function renderMessages(messages) {
 		var $timeInfo = $('<span>', {
 			class: 'time-info'
 		});
-		$timeInfo.text(time);
+		
+		$timeInfo.text(formatTime(time));
 
 		var $senderInfo = $('<span>', {
 			class: 'sender-info'
@@ -80,4 +81,19 @@ function scrollChatAreaDown() {
 	height += '';
 
 	$('ul').animate({scrollTop: height});
+}
+
+function formatTime(time) {
+	var dateTime = new Date(time);
+	var day = dateTime.getDate();
+	var month = dateTime.getMonth() +  1;
+	var year = dateTime.getFullYear();
+	var seconds = dateTime.getSeconds();
+	var minutes = dateTime.getMinutes();
+	var hours = dateTime.getHours();
+
+	var dateString = day + '.' + month + '.' + year +
+		' ' + hours + ':' + minutes + ':' + seconds;
+
+	return dateString;
 }
