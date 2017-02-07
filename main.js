@@ -92,8 +92,6 @@ function formatTime(time) {
 	var minutes = dateTime.getMinutes();
 	var hours = dateTime.getHours();
 
-	var dateString = day + '.' + month + '.' + year +
+	return day + '.' + month + '.' + year +
 		' ' + hours + ':' + minutes + ':' + seconds;
-
-	return dateString;
 }
