@@ -1,5 +1,6 @@
 fetchMessages(true);
 setInterval(fetchMessages, 2000);
+var currentUser;
 
 function fetchMessages(shouldScroll) {
 	$.ajax({
@@ -14,12 +15,23 @@ function fetchMessages(shouldScroll) {
 	});
 }
 
+function whoIsUser() {
+	$.ajax({
+		url: 'backend/return-user-id.php',
+		type: 'GET',
+		success: function(response) {
+			currentUser = response;
+		}
+	});
+}
+
 function renderMessages(messages) {	
 	$('#chat-area').empty();
 	messages.forEach(function(message) {
 		var time = message.time;
 		var sender = message.username;
 		var content = message.content;
+		var id = message.sender_id;
 
 		var $timeInfo = $('<span>', {
 			class: 'time-info'
@@ -38,9 +50,20 @@ function renderMessages(messages) {
 		$messageInformation.append($timeInfo);
 		$messageInformation.append($senderInfo);
 
-		var $content = $('<div>', {
-			class: 'content'
-		});
+		whoIsUser();
+		if (id != currentUser)
+		{
+			var $content = $('<div>', {
+				class: 'content'
+			});
+		}
+		else {
+			var $content = $('<div>', {
+				class: 'own-content'
+			});
+		}
+
+
 		$content.text(content);
 		
 		var $message = $('<li>');
