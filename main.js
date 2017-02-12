@@ -27,52 +27,67 @@ function whoIsUser() {
 
 function renderMessages(messages) {	
 	$('#chat-area').empty();
-	messages.forEach(function(message) {
-		var time = message.time;
-		var sender = message.username;
-		var content = message.content;
-		var id = message.sender_id;
 
-		var $timeInfo = $('<span>', {
-			class: 'time-info'
-		});
-		
-		$timeInfo.text(formatTime(time));
+	messages
+		.sort(function(a, b) {
+			var firstID = a.id;
+			var secondID = b.id;
 
-		var $senderInfo = $('<span>', {
-			class: 'sender-info'
-		});
-		$senderInfo.text(sender);
-		
-		var $messageInformation = $('<div>', {
-			class: 'message-information'
-		});
-		$messageInformation.append($timeInfo);
-		$messageInformation.append($senderInfo);
+			if (firstID < secondID) {
+				return -1;
+			}
+			else if (firstID > secondID) {
+				return 1;
+			}
+			
+			return 0;
+		}) 
+		.forEach(function(message) {
+			var time = message.time;
+			var sender = message.username;
+			var content = message.content;
+			var id = message.sender_id;
 
-		whoIsUser();
-		if (id != currentUser)
-		{
-			var $content = $('<div>', {
-				class: 'content'
+			var $timeInfo = $('<span>', {
+				class: 'time-info'
 			});
-		}
-		else {
-			var $content = $('<div>', {
-				class: 'own-content'
+			
+			$timeInfo.text(formatTime(time));
+
+			var $senderInfo = $('<span>', {
+				class: 'sender-info'
 			});
-		}
+			$senderInfo.text(sender);
+			
+			var $messageInformation = $('<div>', {
+				class: 'message-information'
+			});
+			$messageInformation.append($timeInfo);
+			$messageInformation.append($senderInfo);
+
+			whoIsUser();
+			if (id != currentUser)
+			{
+				var $content = $('<div>', {
+					class: 'content'
+				});
+			}
+			else {
+				var $content = $('<div>', {
+					class: 'own-content'
+				});
+			}
 
 
-		$content.text(content);
-		
-		var $message = $('<li>');
+			$content.text(content);
+			
+			var $message = $('<li>');
 
-		$message.append($messageInformation);
-		$message.append($content);
+			$message.append($messageInformation);
+			$message.append($content);
 
-		$("#chat-area").append($message);
-	});
+			$("#chat-area").append($message);
+		});
 }
 
 $('#message-form').submit(function(e) {
