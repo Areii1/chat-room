@@ -1,8 +1,6 @@
 fetchMessages(true);
 setInterval(fetchMessages, 2000);
 var currentUser;
-var messageCount = 0;
-getMessageCount();
 
 function fetchMessages(shouldScroll) {
 	$.ajax({
@@ -17,18 +15,6 @@ function fetchMessages(shouldScroll) {
 	});
 }
 
-function getMessageCount(){
-	$.ajax({
-		url: 'backend/chat-messages.php',
-		success: function(response) {
-			var parsedResponse = JSON.parse(response);
-			parsedResponse.forEach(function(message){		
-				messageCount++;
-			});
-		}
-	});
-}
-
 function whoIsUser() {
 	$.ajax({
 		url: 'backend/return-user-id.php',
@@ -39,58 +25,53 @@ function whoIsUser() {
 	});
 }
 
-function renderMessages(messages) {
-	var counter = 0;
+function renderMessages(messages) {	
 	$('#chat-area').empty();
 	messages.forEach(function(message) {
-		counter++;
-		if (counter > (messageCount - 20)) {
-			
-			var time = message.time;
-			var sender = message.username;
-			var content = message.content;
-			var id = message.sender_id;
+		var time = message.time;
+		var sender = message.username;
+		var content = message.content;
+		var id = message.sender_id;
 
-			var $timeInfo = $('<span>', {
-				class: 'time-info'
+		var $timeInfo = $('<span>', {
+			class: 'time-info'
+		});
+		
+		$timeInfo.text(formatTime(time));
+
+		var $senderInfo = $('<span>', {
+			class: 'sender-info'
+		});
+		$senderInfo.text(sender);
+		
+		var $messageInformation = $('<div>', {
+			class: 'message-information'
+		});
+		$messageInformation.append($timeInfo);
+		$messageInformation.append($senderInfo);
+
+		whoIsUser();
+		if (id != currentUser)
+		{
+			var $content = $('<div>', {
+				class: 'content'
 			});
-			
-			$timeInfo.text(formatTime(time));
-
-			var $senderInfo = $('<span>', {
-				class: 'sender-info'
-			});
-			$senderInfo.text(sender);
-			
-			var $messageInformation = $('<div>', {
-				class: 'message-information'
-			});
-			$messageInformation.append($timeInfo);
-			$messageInformation.append($senderInfo);
-
-			whoIsUser();
-			if (id != currentUser)
-			{
-				var $content = $('<div>', {
-					class: 'content'
-				});
-			}
-			else {
-				var $content = $('<div>', {
-					class: 'own-content'
-				});
-			}
-
-
-			$content.text(content);
-			
-			var $message = $('<li>');
-
-			$message.append($messageInformation);
-			$message.append($content);
-
-			$("#chat-area").append($message);
 		}
+		else {
+			var $content = $('<div>', {
+				class: 'own-content'
+			});
+		}
+
+
+		$content.text(content);
+		
+		var $message = $('<li>');
+
+		$message.append($messageInformation);
+		$message.append($content);
+
+		$("#chat-area").append($message);
 	});
 }
 
