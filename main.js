@@ -1,6 +1,5 @@
-fetchMessages(true);
-setInterval(fetchMessages, 2000);
 var currentUser;
+initApp();
 
 function fetchMessages(shouldScroll) {
 	$.ajax({
@@ -15,12 +14,14 @@ function fetchMessages(shouldScroll) {
 	});
 }
 
-function whoIsUser() {
+function initApp() {
 	$.ajax({
 		url: 'backend/return-user-id.php',
 		type: 'GET',
 		success: function(response) {
 			currentUser = response;
+			fetchMessages(true);
+			setInterval(fetchMessages, 3000);
 		}
 	});
 }
@@ -65,19 +66,9 @@ function renderMessages(messages) {
 			$messageInformation.append($timeInfo);
 			$messageInformation.append($senderInfo);
 
-			whoIsUser();
-			if (id != currentUser)
-			{
-				var $content = $('<div>', {
-					class: 'content'
-				});
-			}
-			else {
-				var $content = $('<div>', {
-					class: 'own-content'
-				});
-			}
-
+			var $content = $('<div>', {
+				class: id === currentUser ? 'own-content' : 'content'
+			});
 
 			$content.text(content);
 			
