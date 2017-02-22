@@ -20,6 +20,7 @@ if ($username && $password) {
 		echo 'success';
         $_SESSION['username'] = $username;
         $_SESSION['user_id'] = $result['id'];
+		$_SESSION['isAdmin'] = 0;
 
         header("Location: ../index.php");
         die();
